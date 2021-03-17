@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class DatabaseAccess : MonoBehaviour
 {
-    MongoClient client = new MongoClient("mongodb+srv://username:password@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
+    MongoClient client = new MongoClient("mongodb+srv://rtqnguyen12:Trixie1237@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
 
