@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 92662971}
   - component: {fileID: 92662970}
   - component: {fileID: 92662969}
+  - component: {fileID: 92662974}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -393,10 +394,10 @@ Camera:
     height: 1
   near clip plane: 0.05
   far clip plane: 2000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 1
+  field of view: 26.991467
+  orthographic: 1
+  orthographic size: 20
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -408,7 +409,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &92662973
@@ -425,6 +426,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92662974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92662968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15dcfd44a78d614a832a2f5a3f3ac0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomOutMin: 1
+  zoomOutMax: 40
 --- !u!1 &107966862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,6 +2609,7 @@ GameObject:
   - component: {fileID: 1443762640}
   - component: {fileID: 1443762639}
   - component: {fileID: 1443762638}
+  - component: {fileID: 1443762642}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2677,6 +2693,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
+--- !u!114 &1443762642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443762637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86be7cba6d9f38d4ea7260ad2ec27109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1496253292
 GameObject:
   m_ObjectHideFlags: 0
