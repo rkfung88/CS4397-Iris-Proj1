@@ -755,6 +755,7 @@ MonoBehaviour:
   info: {fileID: 472726857}
   city: {fileID: 1260695923}
   uiHolder: {fileID: 1908925285}
+  uistate: 0
 --- !u!4 &205515667
 Transform:
   m_ObjectHideFlags: 0
@@ -3469,6 +3470,7 @@ GameObject:
   - component: {fileID: 1637756298}
   - component: {fileID: 1637756297}
   - component: {fileID: 1637756296}
+  - component: {fileID: 1637756300}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -3552,6 +3554,18 @@ Transform:
   m_Father: {fileID: 1908925286}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
+--- !u!114 &1637756300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637756295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712bdeff045a4af49a686f8e31db9175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744436814
 GameObject:
   m_ObjectHideFlags: 0

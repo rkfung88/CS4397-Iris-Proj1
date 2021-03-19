@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum uiStates { allHiden, allShowing, twoShowing }
+public enum uiStates { allHidden, allShowing, twoShowing }
 
 public class InfoManager : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class InfoManager : MonoBehaviour
     {
         //ToggleAppear();
         UpdateVisibility(false);
-        uistate = uiStates.allHiden;
+        uistate = uiStates.allHidden;
     }
 
     public void UpdateName(string name)
@@ -31,7 +31,15 @@ public class InfoManager : MonoBehaviour
         {
             t.gameObject.SetActive(true);
         }
-        uistate = uiStates.allShowing;
+        if (visible)
+        {
+            uistate = uiStates.allShowing;
+        }
+        else
+        {
+            uistate = uiStates.allHidden;
+        }    
+        
     }
 
     public void UpdateIconVisibility(string iconname)
