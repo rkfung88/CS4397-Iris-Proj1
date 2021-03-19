@@ -14,7 +14,10 @@ public class Icon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            infomanager.UpdateIconVisibility(transform.name);
+        }
     }
 
     private void OnMouseDown()
