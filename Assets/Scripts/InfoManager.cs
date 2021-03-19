@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ToggleVisibility : MonoBehaviour
+public class InfoManager : MonoBehaviour
 {
     public GameObject info;
+    public TextMeshPro city;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,12 +14,15 @@ public class ToggleVisibility : MonoBehaviour
         info.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateName(string name)
     {
-        
+        city.text = name;
     }
 
+    public void UpdateVisibility(bool visible)
+    {
+        info.SetActive(visible);
+    }
     //public void ToggleAppear()
     //{
     //    Renderer rend = gameObject.GetComponent<Renderer>();
