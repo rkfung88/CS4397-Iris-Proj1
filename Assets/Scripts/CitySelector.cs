@@ -7,7 +7,7 @@ public class CitySelector : MonoBehaviour
     private InfoManager infomanager;
 
     private void Start()
-    {
+    { 
         infomanager = FindObjectOfType<InfoManager>();
     }
     void Update()

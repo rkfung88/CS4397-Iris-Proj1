@@ -24,6 +24,7 @@ public class InfoManager : MonoBehaviour
         city.text = name;
     }
 
+
     public void UpdateVisibility(bool visible)
     {
         uiHolder.SetActive(visible);
