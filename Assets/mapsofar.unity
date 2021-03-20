@@ -1980,6 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1725ea622892c943b5f305b365383c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infomanager: {fileID: 0}
   uiHolder: {fileID: 0}
 --- !u!114 &741809923
 MonoBehaviour:
@@ -2424,10 +2425,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 984045321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc33fe578b1885741ac14d24efee141f, type: 3}
+  m_Script: {fileID: 11500000, guid: de23ff4a1260a5e48b988d589520a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  city: {fileID: 0}
+  city: {fileID: 1260695923}
 --- !u!1 &1095902322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,10 +2863,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1205294097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc33fe578b1885741ac14d24efee141f, type: 3}
+  m_Script: {fileID: 11500000, guid: e47a273c06e3ee74aaf5eba58ae19072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  city: {fileID: 0}
+  city: {fileID: 1260695923}
 --- !u!1 &1260695921
 GameObject:
   m_ObjectHideFlags: 0

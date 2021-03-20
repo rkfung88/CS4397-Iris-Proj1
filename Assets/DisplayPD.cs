@@ -6,7 +6,7 @@ using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
 
-public class Icon : MonoBehaviour
+public class DisplayPD : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
@@ -19,7 +19,7 @@ public class Icon : MonoBehaviour
     {
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
-        collection = db.GetCollection<BsonDocument>("Timezones");
+        collection = db.GetCollection<BsonDocument>("Potential Dangers");
     }
 
     // Update is called once per frame
@@ -34,9 +34,9 @@ public class Icon : MonoBehaviour
             string temp = studentDocument.ToString();
             var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
             string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-            string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+            string dangers = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
-            Debug.Log(timeDiff);
+            Debug.Log(dangers);
         }
     }
 
@@ -51,9 +51,9 @@ public class Icon : MonoBehaviour
         string temp = studentDocument.ToString();
         var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
         string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-        string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+        string dangers = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
-        Debug.Log(timeDiff);
+        Debug.Log(dangers);
 
     }
 
