@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BackButton : MonoBehaviour
 {
     private InfoManager infomanager;
+    public GameObject map;
+    public TextMeshPro FinalOutput;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,8 @@ public class BackButton : MonoBehaviour
         else if (infomanager.uistate == uiStates.twoShowing)
         {
             infomanager.UpdateVisibility(true);
+            FinalOutput.text = " ";
+            //map.SetActive(true);
         }
     }
 }

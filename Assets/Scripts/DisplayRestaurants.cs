@@ -10,6 +10,7 @@ public class DisplayRestaurants : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public TextMeshPro FinalOutput;
 
     MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
@@ -21,6 +22,7 @@ public class DisplayRestaurants : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
         collection = db.GetCollection<BsonDocument>("Top_Restaurants");
+        FinalOutput.gameObject.SetActive(false);
 
     }
 
@@ -41,10 +43,10 @@ public class DisplayRestaurants : MonoBehaviour
 
             foreach (var x in rest)
             {
-                Debug.Log(x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n");
+                FinalOutput.text = x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n";
             }
 
-
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -61,11 +63,13 @@ public class DisplayRestaurants : MonoBehaviour
         {
             rest.Add(GetEachComp(doc.ToString()));
         }
-
+        FinalOutput.fontSize = 7.5f;
         foreach (var x in rest)
         {
-            Debug.Log(x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n");
+            FinalOutput.text += x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n\n";
         }
+
+        FinalOutput.gameObject.SetActive(true);
 
     }
 

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CitySelector : MonoBehaviour
 {
     private InfoManager infomanager;
+    public TextMeshPro FinalOutput;
 
     private void Start()
     { 
@@ -22,5 +24,6 @@ public class CitySelector : MonoBehaviour
     {
         infomanager.UpdateName(transform.name);
         infomanager.UpdateVisibility(true);
+        FinalOutput.text = " ";
     }
 }

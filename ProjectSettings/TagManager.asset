@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TimeZoneAccess
+  - Output
   layers:
   - Default
   - TransparentFX
