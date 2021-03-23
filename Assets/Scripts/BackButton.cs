@@ -8,6 +8,7 @@ public class BackButton : MonoBehaviour
     private InfoManager infomanager;
     public GameObject map;
     public TextMeshPro FinalOutput;
+    public List<GameObject> pins;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,12 @@ public class BackButton : MonoBehaviour
         {
             infomanager.UpdateVisibility(true);
             FinalOutput.text = " ";
-            //map.SetActive(true);
+            map.SetActive(true);
+            foreach (var pin in pins)
+            {
+                pin.SetActive(true);
+            }
+
         }
     }
 }

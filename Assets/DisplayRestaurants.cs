@@ -11,6 +11,8 @@ public class DisplayRestaurants : MonoBehaviour
     private InfoManager infomanager;
     public TextMeshPro city;
     public TextMeshPro FinalOutput;
+    public GameObject map;
+    public List<GameObject> pins;
 
     MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
@@ -32,6 +34,13 @@ public class DisplayRestaurants : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
+            map.SetActive(false);
+
+            foreach (var pin in pins)
+            {
+                pin.SetActive(false);
+            }
+
             var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
             var docs = collection.Find(filter).ToList();
 
@@ -41,11 +50,14 @@ public class DisplayRestaurants : MonoBehaviour
                 rest.Add(GetEachComp(doc.ToString()));
             }
 
+            FinalOutput.fontSize = 7.5f;
             foreach (var x in rest)
             {
-                FinalOutput.text = x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n";
+                FinalOutput.text += x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n\n";
             }
 
+            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.fontSize = 15.0f;
             FinalOutput.gameObject.SetActive(true);
         }
     }
@@ -55,6 +67,13 @@ public class DisplayRestaurants : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
+        map.SetActive(false);
+
+        foreach(var pin in pins)
+        {
+            pin.SetActive(false);
+        }
+
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var docs = collection.Find(filter).ToList();
 
@@ -63,12 +82,15 @@ public class DisplayRestaurants : MonoBehaviour
         {
             rest.Add(GetEachComp(doc.ToString()));
         }
-        FinalOutput.fontSize = 7.5f;
+
+        FinalOutput.fontSize = 15.0f;
         foreach (var x in rest)
         {
             FinalOutput.text += x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n\n";
         }
 
+        FinalOutput.color = new Color32(255, 255, 255, 255);
+        FinalOutput.fontSize = 8.5f;
         FinalOutput.gameObject.SetActive(true);
 
     }

@@ -10,6 +10,9 @@ public class Customs : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public GameObject map;
+    public TextMeshPro FinalOutput;
+    public List<GameObject> pins;
     MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
     IMongoCollection<BsonDocument> collection;
@@ -20,6 +23,7 @@ public class Customs : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
         collection = db.GetCollection<BsonDocument>("Customs");
+        FinalOutput.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,6 +32,13 @@ public class Customs : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
+            map.SetActive(false);
+
+            foreach (var pin in pins)
+            {
+                pin.SetActive(false);
+            }
+
             var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
             var studentDocument = collection.Find(filter).FirstOrDefault();
 
@@ -36,7 +47,10 @@ public class Customs : MonoBehaviour
             string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
             string customs = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
-            Debug.Log(customs);
+            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.fontSize = 9.5f;
+            FinalOutput.text = customs;
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -45,6 +59,13 @@ public class Customs : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
+        map.SetActive(false);
+
+        foreach (var pin in pins)
+        {
+            pin.SetActive(false);
+        }
+
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var studentDocument = collection.Find(filter).FirstOrDefault();
 
@@ -53,7 +74,10 @@ public class Customs : MonoBehaviour
         string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
         string customs = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
-        Debug.Log(customs);
+        FinalOutput.color = new Color32(255, 255, 255, 255);
+        FinalOutput.fontSize = 9.5f;
+        FinalOutput.text = customs;
+        FinalOutput.gameObject.SetActive(true);
 
     }
 

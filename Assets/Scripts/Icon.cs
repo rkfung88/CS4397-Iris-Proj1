@@ -41,6 +41,7 @@ public class Icon : MonoBehaviour
             string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
             string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
+            FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 20.0f;
             FinalOutput.text = timeDiff;
             FinalOutput.gameObject.SetActive(true);
@@ -61,6 +62,7 @@ public class Icon : MonoBehaviour
         string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
         string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
+        FinalOutput.color = new Color32(0, 0, 0, 255);
         FinalOutput.fontSize = 20.0f;
         FinalOutput.text = timeDiff;
         FinalOutput.gameObject.SetActive(true);
