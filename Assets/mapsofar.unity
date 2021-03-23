@@ -234,6 +234,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   city: {fileID: 1260695923}
   FinalOutput: {fileID: 741809923}
+  map: {fileID: 1443762637}
+  pins:
+  - {fileID: 637921128}
+  - {fileID: 1496253292}
+  - {fileID: 2013397308}
+  - {fileID: 543272528}
+  - {fileID: 163706236}
+  - {fileID: 9583308}
+  - {fileID: 1509090609}
+  - {fileID: 610610950}
+  - {fileID: 814800420}
+  - {fileID: 688437878}
 --- !u!1 &9583308
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +452,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   city: {fileID: 1260695923}
   FinalOutput: {fileID: 741809923}
+  map: {fileID: 1443762637}
+  pins:
+  - {fileID: 637921128}
+  - {fileID: 1496253292}
+  - {fileID: 2013397308}
+  - {fileID: 543272528}
+  - {fileID: 163706236}
+  - {fileID: 9583308}
+  - {fileID: 1509090609}
+  - {fileID: 610610950}
+  - {fileID: 814800420}
+  - {fileID: 688437878}
 --- !u!1 &163706236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1084,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   city: {fileID: 1260695923}
   FinalOutput: {fileID: 741809923}
+  map: {fileID: 1443762637}
+  pins:
+  - {fileID: 637921128}
+  - {fileID: 1496253292}
+  - {fileID: 2013397308}
+  - {fileID: 543272528}
+  - {fileID: 163706236}
+  - {fileID: 9583308}
+  - {fileID: 1509090609}
+  - {fileID: 610610950}
+  - {fileID: 814800420}
+  - {fileID: 688437878}
 --- !u!1 &472726857
 GameObject:
   m_ObjectHideFlags: 0
