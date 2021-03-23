@@ -10,6 +10,7 @@ public class DisplayTD : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public TextMeshPro FinalOutput;
 
     MongoClient client = new MongoClient("mongodb+srv://atgarcia:cougarcs@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
@@ -21,6 +22,7 @@ public class DisplayTD : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
         collection = db.GetCollection<BsonDocument>("Top_Destinations");
+        FinalOutput.gameObject.SetActive(false);
 
     }
 
@@ -41,10 +43,10 @@ public class DisplayTD : MonoBehaviour
 
             foreach (var x in rest)
             {
-                Debug.Log(x.name + "\n" + x.rating + "\n" + x.tags + "\n" + x.address + "\n" + x.duration + "\n");
+                FinalOutput.text = x.name + "\n" + x.rating + "\n" + x.tags + "\n" + x.address + "\n" + x.duration + "\n";
             }
 
-
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -59,12 +61,13 @@ public class DisplayTD : MonoBehaviour
         {
             rest.Add(GetEachComp(doc.ToString()));
         }
-
+        FinalOutput.fontSize = 7.5f;
         foreach (var x in rest)
         {
-            Debug.Log(x.name + "\n" + x.rating + "\n" + x.tags + "\n" + x.address + "\n" + x.duration + "\n");
+            FinalOutput.text += x.name + "\n" + x.rating + "\n" + x.tags + "\n" + x.address + "\n" + x.duration + "\n\n";
         }
 
+        FinalOutput.gameObject.SetActive(true);
     }
 
     public Destinations GetEachComp(string fullLine)

@@ -10,6 +10,8 @@ public class DisplayLanguage : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public TextMeshPro FinalOutput;
+
     MongoClient client = new MongoClient("mongodb+srv://atgarcia:cougarcs@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
     IMongoCollection<BsonDocument> collection;
@@ -20,6 +22,7 @@ public class DisplayLanguage : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
         collection = db.GetCollection<BsonDocument>("Language");
+        FinalOutput.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,7 +39,9 @@ public class DisplayLanguage : MonoBehaviour
             string stringLangWoLoc = stringLangWoId.Substring(stringLangWoId.IndexOf(",") + 2);
             string language = stringLangWoLoc.Substring(stringLangWoLoc.IndexOf(":") + 2, stringLangWoLoc.IndexOf("}") - stringLangWoLoc.IndexOf(":") - 3);
 
-            Debug.Log(language);
+            FinalOutput.text = language;
+
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -53,7 +58,11 @@ public class DisplayLanguage : MonoBehaviour
         string stringLangWoLoc = stringLangWoId.Substring(stringLangWoId.IndexOf(",") + 2);
         string language = stringLangWoLoc.Substring(stringLangWoLoc.IndexOf(":") + 2, stringLangWoLoc.IndexOf("}") - stringLangWoLoc.IndexOf(":") - 3);
 
-        Debug.Log(language);
+        FinalOutput.fontSize = 20f;
+
+        FinalOutput.text = language;
+
+        FinalOutput.gameObject.SetActive(true);
     }
 
 }

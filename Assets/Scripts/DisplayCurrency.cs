@@ -10,6 +10,8 @@ public class DisplayCurrency : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public TextMeshPro FinalOutput;
+
     MongoClient client = new MongoClient("mongodb+srv://atgarcia:cougarcs@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase db;
     IMongoCollection<BsonDocument> collection;
@@ -20,6 +22,7 @@ public class DisplayCurrency : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         db = client.GetDatabase("Location_Info");
         collection = db.GetCollection<BsonDocument>("Currency");
+        FinalOutput.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,7 +39,9 @@ public class DisplayCurrency : MonoBehaviour
             string stringCurrWoLoc = stringCurrWoId.Substring(stringCurrWoId.IndexOf(",") + 2);
             string currency = stringCurrWoLoc.Substring(stringCurrWoLoc.IndexOf(":") + 2, stringCurrWoLoc.IndexOf("}") - stringCurrWoLoc.IndexOf(":") - 3);
 
-            Debug.Log(currency);
+            FinalOutput.text = currency;
+
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -53,7 +58,11 @@ public class DisplayCurrency : MonoBehaviour
         string stringCurrWoLoc = stringCurrWoId.Substring(stringCurrWoId.IndexOf(",") + 2);
         string currency = stringCurrWoLoc.Substring(stringCurrWoLoc.IndexOf(":") + 2, stringCurrWoLoc.IndexOf("}") - stringCurrWoLoc.IndexOf(":") - 3);
 
-        Debug.Log(currency);
+        FinalOutput.fontSize = 20f;
+
+        FinalOutput.text = currency;
+
+        FinalOutput.gameObject.SetActive(true);
 
     }
 
