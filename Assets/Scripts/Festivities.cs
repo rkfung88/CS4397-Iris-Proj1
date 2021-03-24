@@ -32,13 +32,14 @@ public class Festivities : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
+            /*
             map.SetActive(false);
 
             foreach (var pin in pins)
             {
                 pin.SetActive(false);
             }
-
+            */
             var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
             var studentDocument = collection.Find(filter).FirstOrDefault();
 
@@ -51,8 +52,8 @@ public class Festivities : MonoBehaviour
             string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
 
             //Debug.Log(Festivities2);
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 9.5f;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 12.5f;
             FinalOutput.text = Festivities2;
             FinalOutput.gameObject.SetActive(true);
         }
@@ -61,13 +62,14 @@ public class Festivities : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
+        /*
         map.SetActive(false);
 
         foreach (var pin in pins)
         {
             pin.SetActive(false);
         }
-
+        */
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var studentDocument = collection.Find(filter).FirstOrDefault();
 
@@ -80,8 +82,8 @@ public class Festivities : MonoBehaviour
         string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
 
         //Debug.Log(Festivities2);
-        FinalOutput.color = new Color32(255, 255, 255, 255);
-        FinalOutput.fontSize = 9.5f;
+        FinalOutput.color = new Color32(0, 0, 0, 255);
+        FinalOutput.fontSize = 12.5f;
         FinalOutput.text = Festivities2;
         FinalOutput.gameObject.SetActive(true);
     }

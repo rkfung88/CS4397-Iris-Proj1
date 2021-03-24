@@ -18,6 +18,7 @@ public class CitySelector : MonoBehaviour
         {
             infomanager.UpdateName(transform.name);
             infomanager.UpdateVisibility(true);
+            FinalOutput.text = " ";
         }
     }
     private void OnMouseDown()

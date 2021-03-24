@@ -33,14 +33,14 @@ public class DisplayLanguage : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
-
+            /*
             map.SetActive(false);
 
             foreach (var pin in pins)
             {
                 pin.SetActive(false);
             }
-
+            */
             var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
             var docs = collection.Find(filter).FirstOrDefault();
 
@@ -51,7 +51,7 @@ public class DisplayLanguage : MonoBehaviour
 
             FinalOutput.text = language;
 
-            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 20.0f;
             FinalOutput.gameObject.SetActive(true);
         }
@@ -62,14 +62,14 @@ public class DisplayLanguage : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
-
+        /*
         map.SetActive(false);
 
         foreach (var pin in pins)
         {
             pin.SetActive(false);
         }
-
+        */
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var docs = collection.Find(filter).FirstOrDefault();
 
@@ -80,7 +80,7 @@ public class DisplayLanguage : MonoBehaviour
 
         FinalOutput.text = language;
 
-        FinalOutput.color = new Color32(255, 255, 255, 255);
+        FinalOutput.color = new Color32(0, 0, 0, 255);
         FinalOutput.fontSize = 20f;
         FinalOutput.gameObject.SetActive(true);
     }
