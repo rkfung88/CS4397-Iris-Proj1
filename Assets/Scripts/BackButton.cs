@@ -19,6 +19,25 @@ public class BackButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            if (infomanager.uistate == uiStates.allShowing)
+            {
+                infomanager.UpdateVisibility(false);
+            }
+            else if (infomanager.uistate == uiStates.twoShowing)
+            {
+                infomanager.UpdateVisibility(true);
+                FinalOutput.text = " ";
+                map.SetActive(true);
+                foreach (var pin in pins)
+                {
+                    pin.SetActive(true);
+                }
+
+            }
+
+        }
         
     }
 
