@@ -10,6 +10,9 @@ public class Festivities : MonoBehaviour
 {
     private InfoManager infomanager;
     public TextMeshPro city;
+    public GameObject map;
+    public TextMeshPro FinalOutput;
+    public List<GameObject> pins;
     MongoClient client = new MongoClient("mongodb+srv://dvillarreal54:v0808180@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
@@ -20,6 +23,7 @@ public class Festivities : MonoBehaviour
         infomanager = FindObjectOfType<InfoManager>();
         database = client.GetDatabase("Location_Info");
         collection = database.GetCollection<BsonDocument>("Weather_BestTimeToVisit");
+        FinalOutput.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,10 +32,17 @@ public class Festivities : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
+            map.SetActive(false);
+
+            foreach (var pin in pins)
+            {
+                pin.SetActive(false);
+            }
+
             var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
             var studentDocument = collection.Find(filter).FirstOrDefault();
-            string temp = studentDocument.ToString();
 
+            string temp = studentDocument.ToString();
             var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
             string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
             string BTV = stringWoLoc.Substring(stringWoLoc.IndexOf(",") + 3);
@@ -39,17 +50,28 @@ public class Festivities : MonoBehaviour
             string BTV2 = BTV.Substring(0, BTV.IndexOf(","));
             string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
 
-            Debug.Log(Festivities2);
+            //Debug.Log(Festivities2);
+            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.fontSize = 9.5f;
+            FinalOutput.text = Festivities2;
+            FinalOutput.gameObject.SetActive(true);
         }
     }
 
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
+        map.SetActive(false);
+
+        foreach (var pin in pins)
+        {
+            pin.SetActive(false);
+        }
+
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var studentDocument = collection.Find(filter).FirstOrDefault();
-        string temp = studentDocument.ToString();
 
+        string temp = studentDocument.ToString();
         var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
         string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
         string BTV = stringWoLoc.Substring(stringWoLoc.IndexOf(",") + 3);
@@ -57,7 +79,10 @@ public class Festivities : MonoBehaviour
         string BTV2 = BTV.Substring(0, BTV.IndexOf(","));
         string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
 
-        Debug.Log(Festivities2);
-
+        //Debug.Log(Festivities2);
+        FinalOutput.color = new Color32(255, 255, 255, 255);
+        FinalOutput.fontSize = 9.5f;
+        FinalOutput.text = Festivities2;
+        FinalOutput.gameObject.SetActive(true);
     }
 }
