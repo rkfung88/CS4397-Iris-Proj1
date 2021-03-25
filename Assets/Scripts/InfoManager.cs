@@ -21,6 +21,7 @@ public class InfoManager : MonoBehaviour
 
     public void UpdateName(string name)
     {
+        Debug.Log(name + "Choosen");
         city.text = name;
     }
 

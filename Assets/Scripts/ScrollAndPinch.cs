@@ -30,7 +30,7 @@ public class ScrollAndPinch : MonoBehaviour
         {
             Delta1 = PlanePositionDelta(Input.GetTouch(0));
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                Camera.transform.Translate(Delta1, Space.World);
+                this.gameObject.transform.Translate(Delta1, Space.World);
         }
 
         //Pinch
