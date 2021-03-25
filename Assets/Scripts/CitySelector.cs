@@ -19,6 +19,26 @@ public class CitySelector : MonoBehaviour
             infomanager.UpdateName(transform.name);
             infomanager.UpdateVisibility(true);
             FinalOutput.text = " ";
+            //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            //RaycastHit raycastHit;
+            //if (Physics.Raycast(raycast, out raycastHit))
+            //{
+            //    Debug.Log("010");
+            //    //if (raycastHit.collider.name == "Map")
+            //    //{
+            //    //    Debug.Log("Map clicked");
+            //    //}
+
+            //    //OR with Tag
+
+            //    if (raycastHit.collider.CompareTag("Pins"))
+            //    {
+            //        Debug.Log("Pins");
+            //        infomanager.UpdateName(transform.name);
+            //        infomanager.UpdateVisibility(true);
+            //        FinalOutput.text = " ";
+            //    }
+            //}
         }
     }
     private void OnMouseDown()

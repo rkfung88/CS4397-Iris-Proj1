@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 525786}
   m_Layer: 0
   m_Name: TravelPlaces
-  m_TagString: Untagged
+  m_TagString: Output
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,15 +237,15 @@ MonoBehaviour:
   map: {fileID: 1443762637}
   pins:
   - {fileID: 637921128}
+  - {fileID: 9583308}
   - {fileID: 1496253292}
   - {fileID: 2013397308}
   - {fileID: 543272528}
   - {fileID: 163706236}
-  - {fileID: 9583308}
-  - {fileID: 1509090609}
-  - {fileID: 610610950}
   - {fileID: 814800420}
+  - {fileID: 610610950}
   - {fileID: 688437878}
+  - {fileID: 1509090609}
 --- !u!1 &9583308
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205515665
 GameObject:
@@ -670,7 +670,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &252751041
 GameObject:
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 252751046}
   m_Layer: 0
   m_Name: Manila
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,13 +761,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252751041}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 7.321692, y: -22.150532, z: 276.94562}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.32605022, y: 0.8499694, z: 0.20199989}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 637921129}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &252751046
 MonoBehaviour:
@@ -800,7 +800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &310128729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310128728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a15dcfd44a78d614a832a2f5a3f3ac0e, type: 3}
   m_Name: 
@@ -849,7 +849,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 20
   m_Depth: 0
   m_CullingMask:
@@ -878,7 +878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356348793
 GameObject:
@@ -1116,7 +1116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &436117273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ Camera:
   near clip plane: 0.05
   far clip plane: 2000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 20
   m_Depth: 1
   m_CullingMask:
@@ -1206,7 +1206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436117278
 MonoBehaviour:
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436117272}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a15dcfd44a78d614a832a2f5a3f3ac0e, type: 3}
   m_Name: 
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 599387240}
   m_Layer: 0
   m_Name: Seoul
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1446,13 +1446,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599387235}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 7.088857, y: -17.349281, z: 277.1778}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.31650043, y: 0.76805305, z: -0.03840051}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 688437879}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &599387240
 MonoBehaviour:
@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 723415599}
   m_Layer: 0
   m_Name: Hoi An
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1964,13 +1964,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723415594}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 4.2561817, y: -22.512608, z: 277.08066}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.17249997, y: 0.7679529, z: 0.21849917}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 543272529}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &723415599
 MonoBehaviour:
@@ -2400,7 +2400,7 @@ GameObject:
   - component: {fileID: 984045326}
   m_Layer: 0
   m_Name: Restaurants
-  m_TagString: Untagged
+  m_TagString: Restaurants
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2523,7 +2523,7 @@ GameObject:
   - component: {fileID: 1095902327}
   m_Layer: 0
   m_Name: Kolkata
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,13 +2597,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095902322}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: -0.84365046, y: -21.33258, z: 277.22275}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.08199979, y: 0.76794076, z: 0.15699922}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 2013397309}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1095902327
 MonoBehaviour:
@@ -2756,7 +2756,7 @@ GameObject:
   - component: {fileID: 1101094304}
   m_Layer: 0
   m_Name: Taipei
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2830,13 +2830,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101094299}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 6.8857136, y: -20.085114, z: 277.09927}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3051003, y: 0.76798797, z: 0.09834952}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 610610951}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1101094304
 MonoBehaviour:
@@ -3160,7 +3160,7 @@ GameObject:
   - component: {fileID: 1415252963}
   m_Layer: 0
   m_Name: Tokyo
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3234,13 +3234,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415252958}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 9.623918, y: -16.852882, z: 277.14005}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.44350013, y: 0.7679637, z: -0.062001158}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 1509090610}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1415252963
 MonoBehaviour:
@@ -3268,9 +3268,10 @@ GameObject:
   - component: {fileID: 1443762639}
   - component: {fileID: 1443762638}
   - component: {fileID: 1443762642}
+  - component: {fileID: 1443762643}
   m_Layer: 0
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3345,11 +3346,21 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443762637}
   m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 0.7834548, y: -18.201513, z: 278.05206}
+  m_LocalPosition: {x: 1.9975889, y: -15.298258, z: 278.05206}
   m_LocalScale: {x: 20, y: 1, z: 20}
-  m_Children: []
+  m_Children:
+  - {fileID: 1415252962}
+  - {fileID: 599387239}
+  - {fileID: 1101094303}
+  - {fileID: 1824326976}
+  - {fileID: 2118846720}
+  - {fileID: 723415598}
+  - {fileID: 1095902326}
+  - {fileID: 1818933193}
+  - {fileID: 1897871553}
+  - {fileID: 252751045}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1443762642
 MonoBehaviour:
@@ -3363,6 +3374,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86be7cba6d9f38d4ea7260ad2ec27109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1443762643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443762637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f2a4365e963d644818e1de16e728bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 436117276}
+  Rotate: 0
 --- !u!1 &1496253292
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,7 +3691,7 @@ GameObject:
   - component: {fileID: 1637756300}
   m_Layer: 0
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: Back
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3787,7 +3812,7 @@ GameObject:
   - component: {fileID: 1818933194}
   m_Layer: 0
   m_Name: Ubud
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3861,13 +3886,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818933189}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 6.382913, y: -26.857227, z: 276.74265}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2770503, y: 0.92997646, z: 0.4370993}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 1496253293}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1818933194
 MonoBehaviour:
@@ -3897,7 +3922,7 @@ GameObject:
   - component: {fileID: 1824326977}
   m_Layer: 0
   m_Name: Stockholm
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3971,13 +3996,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824326972}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: -7.4447994, y: -10.501141, z: 277.6883}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4071996, y: 0.7679639, z: -0.3880009}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 814800421}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1824326977
 MonoBehaviour:
@@ -4007,7 +4032,7 @@ GameObject:
   - component: {fileID: 1897871554}
   m_Layer: 0
   m_Name: Kuala Lumpur
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4081,13 +4106,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897871549}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 2.6355262, y: -25.019785, z: 276.95648}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09040029, y: 0.84996986, z: 0.34324908}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 9583309}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &1897871554
 MonoBehaviour:
@@ -4125,15 +4150,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908925285}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.89411396, y: -17.310005, z: 293.34085}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.1082482, y: -14.40675, z: 293.34085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1637756299}
   - {fileID: 472726858}
   - {fileID: 1260695922}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2013397308
 GameObject:
@@ -4245,7 +4270,7 @@ GameObject:
   - component: {fileID: 2118846721}
   m_Layer: 0
   m_Name: Chiang Mai
-  m_TagString: Untagged
+  m_TagString: Pins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4319,13 +4344,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118846716}
-  m_LocalRotation: {x: 0.010636599, y: -0.71771204, z: 0.69624734, w: 0.004001722}
-  m_LocalPosition: {x: 1.7421212, y: -22.01721, z: 277.14804}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.100000046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0470003, y: 0.7679963, z: 0.19249944}
+  m_LocalScale: {x: 0.0050000004, y: 1, z: 0.005000002}
   m_Children:
   - {fileID: 163706237}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1443762641}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 88.18, y: -196.584, z: -17.77}
 --- !u!114 &2118846721
 MonoBehaviour:

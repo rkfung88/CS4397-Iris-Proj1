@@ -6,6 +6,11 @@ TagManager:
   tags:
   - TimeZoneAccess
   - Output
+  - Map
+  - Back
+  - TravelPlaces
+  - Restaurants
+  - Pins
   layers:
   - Default
   - TransparentFX

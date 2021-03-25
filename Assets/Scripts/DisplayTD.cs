@@ -8,6 +8,10 @@ using TMPro;
 
 public class DisplayTD : MonoBehaviour
 {
+    private Touch theTouch;
+    private float timeTouchEnded;
+    private float displayedTime = 0.5f;
+
     private InfoManager infomanager;
     public TextMeshPro city;
     public TextMeshPro FinalOutput;
@@ -33,6 +37,25 @@ public class DisplayTD : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
+            //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            //RaycastHit raycastHit;
+            //if (Physics.Raycast(raycast, out raycastHit))
+            //{
+            //    Debug.Log("2");
+            //    //if (raycastHit.collider.name == "Map")
+            //    //{
+            //    //    Debug.Log("Map clicked");
+            //    //}
+
+            //    //OR with Tag
+
+            //    if (raycastHit.collider.CompareTag("TravelPlaces"))
+            //    {
+            //        Debug.Log("TravelPlaces");
+            //        OnMouseDown();
+            //    }
+            //}
+
             infomanager.UpdateIconVisibility(transform.name);
             map.SetActive(false);
 
