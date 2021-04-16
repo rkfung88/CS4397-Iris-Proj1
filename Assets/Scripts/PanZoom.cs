@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PanZoom : MonoBehaviour
 {
+    public GameObject model;
     Vector3 touchStart;
     public float zoomOutMin = 1;
     public float zoomOutMax = 8;
+    private Vector3 originalScale;
+
+    //void Start()
+    //{
+    //    originalScale = model.transform.localScale;
+    //}
 
     // Update is called once per frame
     void Update()

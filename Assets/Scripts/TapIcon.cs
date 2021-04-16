@@ -20,17 +20,17 @@ public class TapIcon : MonoBehaviour
             if (Physics.Raycast(raycast, out raycastHit))
             {
                 Debug.Log("Something Touch");
-                if (raycastHit.collider.name == "Map")
-                {
-                    Debug.Log("Map clicked");
-                }
+                //if (raycastHit.collider.name == "Map")
+                //{
+                //    Debug.Log("Map clicked");
+                //}
 
                 //OR with Tag
 
-                //if (raycastHit.collider.CompareTag("SoccerTag"))
-                //{
-                //    Debug.Log("Soccer Ball clicked");
-                //}
+                if (raycastHit.collider.CompareTag("Map"))
+                {
+                    Debug.Log("Map");
+                }
             }
         }
     }

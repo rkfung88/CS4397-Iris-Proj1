@@ -19,23 +19,41 @@ public class BackButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+        if((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Ended))
         {
-            if (infomanager.uistate == uiStates.allShowing)
+            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit raycastHit;
+            if (Physics.Raycast(raycast, out raycastHit))
             {
-                infomanager.UpdateVisibility(false);
-            }
-            else if (infomanager.uistate == uiStates.twoShowing)
-            {
-                infomanager.UpdateVisibility(true);
-                FinalOutput.text = " ";
-                map.SetActive(true);
-                foreach (var pin in pins)
-                {
-                    pin.SetActive(true);
-                }
+                Debug.Log("1");
+                //if (raycastHit.collider.name == "Map")
+                //{
+                //    Debug.Log("Map clicked");
+                //}
 
+                //OR with Tag
+
+                if (raycastHit.collider.CompareTag("Back"))
+                {
+                    Debug.Log("Back");
+                    OnMouseDown();
+                }
             }
+            //if (infomanager.uistate == uiStates.allShowing)
+            //{
+            //    infomanager.UpdateVisibility(false);
+            //}
+            //else if (infomanager.uistate == uiStates.twoShowing)
+            //{
+            //    infomanager.UpdateVisibility(true);
+            //    FinalOutput.text = " ";
+            //    map.SetActive(true);
+            //    foreach (var pin in pins)
+            //    {
+            //        pin.SetActive(true);
+            //    }
+
+            //}
 
         }
         

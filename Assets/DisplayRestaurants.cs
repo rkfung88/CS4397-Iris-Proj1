@@ -59,6 +59,50 @@ public class DisplayRestaurants : MonoBehaviour
             FinalOutput.color = new Color32(255, 255, 255, 255);
             FinalOutput.fontSize = 15.0f;
             FinalOutput.gameObject.SetActive(true);
+
+            //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            //RaycastHit raycastHit;
+            //if (Physics.Raycast(raycast, out raycastHit))
+            //{
+            //    Debug.Log("3");
+            //    //if (raycastHit.collider.name == "Map")
+            //    //{
+            //    //    Debug.Log("Map clicked");
+            //    //}
+
+            //    //OR with Tag
+
+            //    if (raycastHit.collider.CompareTag("Restaurants"))
+            //    {
+            //        Debug.Log("Restaurants");
+            //        infomanager.UpdateIconVisibility(transform.name);
+            //        map.SetActive(false);
+
+            //        foreach (var pin in pins)
+            //        {
+            //            pin.SetActive(false);
+            //        }
+
+            //        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
+            //        var docs = collection.Find(filter).ToList();
+
+            //        List<Restaurants> rest = new List<Restaurants>();
+            //        foreach (var doc in docs)
+            //        {
+            //            rest.Add(GetEachComp(doc.ToString()));
+            //        }
+
+            //        FinalOutput.fontSize = 7.5f;
+            //        foreach (var x in rest)
+            //        {
+            //            FinalOutput.text += x.name + "\n" + x.rating + "\n" + x.priceRange + "\n" + x.cuisine + "\n\n";
+            //        }
+
+            //        FinalOutput.color = new Color32(255, 255, 255, 255);
+            //        FinalOutput.fontSize = 15.0f;
+            //        FinalOutput.gameObject.SetActive(true);
+            //    }
+            //}
         }
     }
 
