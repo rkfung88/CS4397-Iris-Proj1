@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
 
 public class Icon : MonoBehaviour
 {
     private InfoManager infomanager;
+    private TzHTTP tzInfo;
+
     public TextMeshPro city;
     public TextMeshPro FinalOutput;
     public GameObject map;
-    MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
-    IMongoDatabase db;
-    IMongoCollection<BsonDocument> collection;
+    public string selectedCity;
+
 
     // Start is called before the first frame update
     void Start()
     {
+    
         infomanager = FindObjectOfType<InfoManager>();
-        db = client.GetDatabase("Location_Info");
-        collection = db.GetCollection<BsonDocument>("Timezones");
+        tzInfo = new TzHTTP();
         FinalOutput.gameObject.SetActive(false);
-
 
     }
 
@@ -33,18 +33,16 @@ public class Icon : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
-            var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-            var studentDocument = collection.Find(filter).FirstOrDefault();
+            tzInfo.Location = city.text;
+            StartCoroutine(GetTimezone(tzInfo.Location, result =>
+            {
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 20.0f;
+                FinalOutput.text = result.Timezone;
+                FinalOutput.gameObject.SetActive(true);
 
-            string temp = studentDocument.ToString();
-            var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-            string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-            string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+            }));
 
-            FinalOutput.color = new Color32(0, 0, 0, 255);
-            FinalOutput.fontSize = 20.0f;
-            FinalOutput.text = timeDiff;
-            FinalOutput.gameObject.SetActive(true);
 
         }
     }
@@ -54,20 +52,41 @@ public class Icon : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
-        //map.SetActive(false);
-        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-        var studentDocument = collection.Find(filter).FirstOrDefault();
-        string temp = studentDocument.ToString();
-        var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-        string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-        string timeDiff = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+        tzInfo.Location = city.text;
+        StartCoroutine(GetTimezone(tzInfo.Location, result =>
+         {
+             FinalOutput.color = new Color32(0, 0, 0, 255);
+             FinalOutput.fontSize = 20.0f;
+             FinalOutput.text = result.Timezone;
+             FinalOutput.gameObject.SetActive(true);
 
-        FinalOutput.color = new Color32(0, 0, 0, 255);
-        FinalOutput.fontSize = 20.0f;
-        FinalOutput.text = timeDiff;
-        FinalOutput.gameObject.SetActive(true);
+         }));
+        
+    }
 
+    IEnumerator GetTimezone(string id, System.Action<TzHTTP> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/destin_info-uhypn/service/Info_Center/incoming_webhook/get_Time?Location=" + id))
+        {
+            yield return request.SendWebRequest();
 
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(TzHTTP.Parse(request.downloadHandler.text));
+                    //Debug.Log(request.downloadHandler.text);
+                }
+            }
+        }
     }
 
 

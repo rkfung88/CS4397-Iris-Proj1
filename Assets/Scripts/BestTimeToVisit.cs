@@ -5,6 +5,8 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
 
 public class BestTimeToVisit : MonoBehaviour
 {
@@ -13,16 +15,16 @@ public class BestTimeToVisit : MonoBehaviour
     public GameObject map;
     public TextMeshPro FinalOutput;
     public List<GameObject> pins;
-    MongoClient client = new MongoClient("mongodb+srv://dvillarreal54:v0808180@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
+    //MongoClient client = new MongoClient("mongodb+srv://dvillarreal54:v0808180@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
     //private TextMeshPro fOutput;
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
-        database = client.GetDatabase("Location_Info");
-        collection = database.GetCollection<BsonDocument>("Weather_BestTimeToVisit");
+        //infomanager = FindObjectOfType<InfoManager>();
+        //database = client.GetDatabase("Location_Info");
+        //collection = database.GetCollection<BsonDocument>("Weather_BestTimeToVisit");
     }
 
     // Update is called once per frame
@@ -60,15 +62,16 @@ public class BestTimeToVisit : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
         /*
+        infomanager.UpdateIconVisibility(transform.name);
+        
         map.SetActive(false);
 
         foreach (var pin in pins)
         {
             pin.SetActive(false);
         }
-        */
+        
         var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
         var studentDocument = collection.Find(filter).FirstOrDefault();
 
@@ -85,6 +88,7 @@ public class BestTimeToVisit : MonoBehaviour
         FinalOutput.fontSize = 12.5f;
         FinalOutput.text = BTV2;
         FinalOutput.gameObject.SetActive(true);
-
+        */
     }
+
 }
