@@ -800,7 +800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &310128729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,7 +1117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &436117273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,6 +3653,7 @@ MonoBehaviour:
   city: {fileID: 1260695923}
   FinalOutput: {fileID: 741809923}
   map: {fileID: 1443762637}
+  selectedCity: 
 --- !u!1 &1637756295
 GameObject:
   m_ObjectHideFlags: 0

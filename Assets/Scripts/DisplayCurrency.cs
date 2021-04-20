@@ -1,29 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
 
 public class DisplayCurrency : MonoBehaviour
 {
     private InfoManager infomanager;
+    private CurrHTTP curr;
     public TextMeshPro city;
     public TextMeshPro FinalOutput;
     public GameObject map;
-    public List<GameObject> pins;
-
-    MongoClient client = new MongoClient("mongodb+srv://atgarcia:cougarcs@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
-    IMongoDatabase db;
-    IMongoCollection<BsonDocument> collection;
+   
 
     // Start is called before the first frame update
     void Start()
     {
         infomanager = FindObjectOfType<InfoManager>();
-        db = client.GetDatabase("Location_Info");
-        collection = db.GetCollection<BsonDocument>("Currency");
+        curr = new CurrHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
 
@@ -33,27 +29,7 @@ public class DisplayCurrency : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
-            /*
-            map.SetActive(false);
-
-            foreach (var pin in pins)
-            {
-                pin.SetActive(false);
-            }
-            */
-            var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-            var docs = collection.Find(filter).FirstOrDefault();
-
-            string temp = docs.ToString();
-            var stringCurrWoId = temp.Substring(temp.IndexOf("),") + 3);
-            string stringCurrWoLoc = stringCurrWoId.Substring(stringCurrWoId.IndexOf(",") + 2);
-            string currency = stringCurrWoLoc.Substring(stringCurrWoLoc.IndexOf(":") + 2, stringCurrWoLoc.IndexOf("}") - stringCurrWoLoc.IndexOf(":") - 3);
-
-            FinalOutput.text = currency;
-
-            FinalOutput.color = new Color32(0, 0, 0, 255);
-            FinalOutput.fontSize = 20.0f;
-            FinalOutput.gameObject.SetActive(true);
+            
         }
     }
 
@@ -62,28 +38,40 @@ public class DisplayCurrency : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
-        /*
-        map.SetActive(false);
-
-        foreach (var pin in pins)
+        curr.Location = city.text;
+        StartCoroutine(GetCurrency(curr.Location, result =>
         {
-            pin.SetActive(false);
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 20.0f;
+            FinalOutput.text = result.Currency;
+            FinalOutput.gameObject.SetActive(true);
+
+        }));
+
+    }
+
+    IEnumerator GetCurrency(string id, System.Action<CurrHTTP> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/destin_info-uhypn/service/Info_Center/incoming_webhook/get_Currency?Location=" + id))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(CurrHTTP.Parse(request.downloadHandler.text));
+                }
+            }
         }
-        */
-        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-        var docs = collection.Find(filter).FirstOrDefault();
-
-        string temp = docs.ToString();
-        var stringCurrWoId = temp.Substring(temp.IndexOf("),") + 3);
-        string stringCurrWoLoc = stringCurrWoId.Substring(stringCurrWoId.IndexOf(",") + 2);
-        string currency = stringCurrWoLoc.Substring(stringCurrWoLoc.IndexOf(":") + 2, stringCurrWoLoc.IndexOf("}") - stringCurrWoLoc.IndexOf(":") - 3);
-
-        FinalOutput.text = currency;
-
-        FinalOutput.color = new Color32(0, 0, 0, 255);
-        FinalOutput.fontSize = 20f;
-        FinalOutput.gameObject.SetActive(true);
-
     }
 
 }

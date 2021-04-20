@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
 
 public class DisplayPD : MonoBehaviour
 {
     private InfoManager infomanager;
+    private PDHTTP dangers;
     public TextMeshPro city;
     public GameObject map;
     public TextMeshPro FinalOutput;
     public List<GameObject> pins;
-    MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
-    IMongoDatabase db;
-    IMongoCollection<BsonDocument> collection;
 
     // Start is called before the first frame update
     void Start()
     {
         infomanager = FindObjectOfType<InfoManager>();
-        db = client.GetDatabase("Location_Info");
-        collection = db.GetCollection<BsonDocument>("Potential Dangers");
+        dangers = new PDHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
 
@@ -39,18 +36,16 @@ public class DisplayPD : MonoBehaviour
                 pin.SetActive(false);
             }
 
-            var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-            var studentDocument = collection.Find(filter).FirstOrDefault();
+            dangers.Location = city.text;
+            StartCoroutine(GetPD(dangers.Location, result =>
+            {
+                FinalOutput.color = new Color32(255, 255, 255, 255);
+                FinalOutput.fontSize = 9.5f;
+                FinalOutput.text = result.PD;
+                FinalOutput.gameObject.SetActive(true);
+            }));
 
-            string temp = studentDocument.ToString();
-            var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-            string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-            string dangers = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
 
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 9.5f;
-            FinalOutput.text = dangers;
-            FinalOutput.gameObject.SetActive(true);
         }
     }
 
@@ -65,19 +60,43 @@ public class DisplayPD : MonoBehaviour
         {
             pin.SetActive(false);
         }
-        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-        var studentDocument = collection.Find(filter).FirstOrDefault();
 
-        string temp = studentDocument.ToString();
-        var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-        string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-        string dangers = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+        dangers.Location = city.text;
+        StartCoroutine(GetPD(dangers.Location, result =>
+        {
+            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.fontSize = 9.5f;
+            FinalOutput.text = result.PD;
+            FinalOutput.gameObject.SetActive(true);
+        }));
 
-        FinalOutput.color = new Color32(255, 255, 255, 255);
-        FinalOutput.fontSize = 9.5f;
-        FinalOutput.text = dangers;
-        FinalOutput.gameObject.SetActive(true);
+    
 
+    }
+
+
+    IEnumerator GetPD(string id, System.Action<PDHTTP> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/destin_info-uhypn/service/Info_Center/incoming_webhook/get_PD?Location=" + id))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(PDHTTP.Parse(request.downloadHandler.text));
+                }
+            }
+        }
     }
 
 }

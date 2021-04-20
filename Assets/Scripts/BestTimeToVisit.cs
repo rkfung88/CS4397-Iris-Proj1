@@ -1,30 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
 using System.Text;
 using UnityEngine.Networking;
 
+
 public class BestTimeToVisit : MonoBehaviour
 {
     private InfoManager infomanager;
+    private WeatherHTTP weather;
     public TextMeshPro city;
     public GameObject map;
     public TextMeshPro FinalOutput;
-    public List<GameObject> pins;
-    //MongoClient client = new MongoClient("mongodb+srv://dvillarreal54:v0808180@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
-    IMongoDatabase database;
-    IMongoCollection<BsonDocument> collection;
-    //private TextMeshPro fOutput;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
-        //database = client.GetDatabase("Location_Info");
-        //collection = database.GetCollection<BsonDocument>("Weather_BestTimeToVisit");
+        infomanager = FindObjectOfType<InfoManager>();
+        weather = new WeatherHTTP();
+        FinalOutput.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -33,62 +31,59 @@ public class BestTimeToVisit : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
-            /*
-            map.SetActive(false);
-
-            foreach (var pin in pins)
+            weather.Location = city.text;
+            StartCoroutine(GetWeather(weather.Location, result =>
             {
-                pin.SetActive(false);
-            }
-            */
-            var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-            var studentDocument = collection.Find(filter).FirstOrDefault();
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 15.0f;
+                FinalOutput.text = result.BTV;
+                FinalOutput.gameObject.SetActive(true);
 
-            string temp = studentDocument.ToString();
-            var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-            string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-            string BTV = stringWoLoc.Substring(stringWoLoc.IndexOf(",") + 3);
-            string Festivities = BTV.Substring(BTV.IndexOf(",") + 3);
-            string BTV2 = BTV.Substring(0, BTV.IndexOf(","));
-            string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
+            }));
 
-            //Debug.Log(BTV2);
-            FinalOutput.color = new Color32(0, 0, 0, 255);
-            FinalOutput.fontSize = 12.5f;
-            FinalOutput.text = BTV2;
-            FinalOutput.gameObject.SetActive(true);
+
         }
     }
 
     private void OnMouseDown()
     {
-        /*
+        
         infomanager.UpdateIconVisibility(transform.name);
-        
-        map.SetActive(false);
-
-        foreach (var pin in pins)
+        weather.Location = city.text;
+        StartCoroutine(GetWeather(weather.Location, result =>
         {
-            pin.SetActive(false);
-        }
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 15.0f;
+            FinalOutput.text = result.BTV;
+            FinalOutput.gameObject.SetActive(true);
+
+        }));
+
         
-        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-        var studentDocument = collection.Find(filter).FirstOrDefault();
+    }
 
-        string temp = studentDocument.ToString();
-        var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-        string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-        string BTV = stringWoLoc.Substring(stringWoLoc.IndexOf(",") + 3);
-        string Festivities = BTV.Substring(BTV.IndexOf(",") + 3);
-        string BTV2 = BTV.Substring(0, BTV.IndexOf(","));
-        string Festivities2 = Festivities.Substring(0, Festivities.IndexOf(","));
+    IEnumerator GetWeather(string id, System.Action<WeatherHTTP> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/destin_info-uhypn/service/Info_Center/incoming_webhook/get_Weather?Location=" + id))
+        {
+            yield return request.SendWebRequest();
 
-        //Debug.Log(Festivities2);
-        FinalOutput.color = new Color32(0, 0, 0, 255);
-        FinalOutput.fontSize = 12.5f;
-        FinalOutput.text = BTV2;
-        FinalOutput.gameObject.SetActive(true);
-        */
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(WeatherHTTP.Parse(request.downloadHandler.text));
+                }
+            }
+        }
     }
 
 }

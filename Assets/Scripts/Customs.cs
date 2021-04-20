@@ -1,28 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Threading.Tasks;
 using TMPro;
+using System.Text;
+using UnityEngine.Networking;
+
 
 public class Customs : MonoBehaviour
 {
     private InfoManager infomanager;
+    private CustomsHTTP customs;
     public TextMeshPro city;
     public GameObject map;
     public TextMeshPro FinalOutput;
     public List<GameObject> pins;
-    MongoClient client = new MongoClient("mongodb+srv://rkfung:test@cluster0.tgnzx.mongodb.net/Location_Info?retryWrites=true&w=majority");
-    IMongoDatabase db;
-    IMongoCollection<BsonDocument> collection;
 
     // Start is called before the first frame update
     void Start()
     {
         infomanager = FindObjectOfType<InfoManager>();
-        db = client.GetDatabase("Location_Info");
-        collection = db.GetCollection<BsonDocument>("Customs");
+        customs = new CustomsHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
 
@@ -32,6 +30,7 @@ public class Customs : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             infomanager.UpdateIconVisibility(transform.name);
+            customs.Location = city.text;
             map.SetActive(false);
 
             foreach (var pin in pins)
@@ -39,18 +38,16 @@ public class Customs : MonoBehaviour
                 pin.SetActive(false);
             }
 
-            var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-            var studentDocument = collection.Find(filter).FirstOrDefault();
+            StartCoroutine(GetCustoms(customs.Location, result =>
+            {
+                FinalOutput.color = new Color32(255, 255, 255, 255);
+                FinalOutput.fontSize = 9.5f;
+                FinalOutput.text = result.Customs;
+                FinalOutput.gameObject.SetActive(true);
 
-            string temp = studentDocument.ToString();
-            var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-            string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-            string customs = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+            }));
 
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 9.5f;
-            FinalOutput.text = customs;
-            FinalOutput.gameObject.SetActive(true);
+
         }
     }
 
@@ -59,6 +56,7 @@ public class Customs : MonoBehaviour
     private void OnMouseDown()
     {
         infomanager.UpdateIconVisibility(transform.name);
+        customs.Location = city.text;
         map.SetActive(false);
 
         foreach (var pin in pins)
@@ -66,19 +64,44 @@ public class Customs : MonoBehaviour
             pin.SetActive(false);
         }
 
-        var filter = Builders<BsonDocument>.Filter.Eq("Location", city.text);
-        var studentDocument = collection.Find(filter).FirstOrDefault();
+        StartCoroutine(GetCustoms(customs.Location, result =>
+        {
+            FinalOutput.color = new Color32(255, 255, 255, 255);
+            FinalOutput.fontSize = 9.5f;
+            FinalOutput.text = result.Customs;
+            FinalOutput.gameObject.SetActive(true);
 
-        string temp = studentDocument.ToString();
-        var stringWoId = temp.Substring(temp.IndexOf("),") + 4);
-        string stringWoLoc = stringWoId.Substring(stringWoId.IndexOf(",") + 3);
-        string customs = stringWoLoc.Substring(stringWoLoc.IndexOf(":") + 2, stringWoLoc.IndexOf("}") - stringWoLoc.IndexOf(":") - 3);
+        }));
 
-        FinalOutput.color = new Color32(255, 255, 255, 255);
-        FinalOutput.fontSize = 9.5f;
-        FinalOutput.text = customs;
-        FinalOutput.gameObject.SetActive(true);
 
     }
 
+    IEnumerator GetCustoms(string id, System.Action<CustomsHTTP> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/destin_info-uhypn/service/Info_Center/incoming_webhook/get_Customs?Location=" + id))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(null);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(CustomsHTTP.Parse(request.downloadHandler.text));
+                    //Debug.Log(request.downloadHandler.text);
+                }
+            }
+        }
+    }
+
+
 }
+
+

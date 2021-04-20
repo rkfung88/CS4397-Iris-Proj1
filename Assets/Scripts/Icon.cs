@@ -83,7 +83,6 @@ public class Icon : MonoBehaviour
                 if (callback != null)
                 {
                     callback.Invoke(TzHTTP.Parse(request.downloadHandler.text));
-                    //Debug.Log(request.downloadHandler.text);
                 }
             }
         }
