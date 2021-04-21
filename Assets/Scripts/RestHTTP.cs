@@ -8,6 +8,7 @@ public class RestHTTP
     public string Location;
     public string Cuisine;
     public string Foods;
+    public string Rest;
 
     public string Stringify()
     {
