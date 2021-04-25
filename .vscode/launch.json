@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch SimpleApp",
+            "request": "launch",
+            "mainClass": "SimpleApp"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestConnection",
+            "request": "launch",
+            "mainClass": "TestConnection"
+        },
+        {
+            "type": "java",
+            "name": "Launch Scores",
+            "request": "launch",
+            "mainClass": "org.apache.derbyDemo.scores.app.Scores"
+        }
+        {
+            "java.project.referencedLibraries": [
+                "c:\\Users\\sb\\Desktop\\Derby\\db-derby-10.14.2.0-bin\\lib\\**.jar"
+            ]
+        }
+        
+    ]
+}
