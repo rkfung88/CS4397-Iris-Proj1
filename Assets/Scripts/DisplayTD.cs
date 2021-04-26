@@ -23,7 +23,7 @@ public class DisplayTD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         destinations = new DestinHTTP();
         FinalOutput.gameObject.SetActive(false);
 

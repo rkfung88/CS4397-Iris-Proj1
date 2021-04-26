@@ -20,7 +20,7 @@ public class DisplayLanguage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         lang = new LangHTTP();
         FinalOutput.gameObject.SetActive(false);
     }

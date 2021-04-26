@@ -18,7 +18,7 @@ public class DisplayPD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         dangers = new PDHTTP();
         FinalOutput.gameObject.SetActive(false);
     }

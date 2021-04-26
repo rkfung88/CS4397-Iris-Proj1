@@ -18,7 +18,7 @@ public class DisplayRestaurants : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         rest = new RestHTTP();
         FinalOutput.gameObject.SetActive(false);
 

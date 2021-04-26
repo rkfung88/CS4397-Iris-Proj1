@@ -19,7 +19,7 @@ public class Festivities : MonoBehaviour
 
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         weather = new WeatherHTTP();
         FinalOutput.gameObject.SetActive(false);
 

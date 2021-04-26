@@ -19,7 +19,7 @@ public class Customs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         customs = new CustomsHTTP();
         FinalOutput.gameObject.SetActive(false);
     }

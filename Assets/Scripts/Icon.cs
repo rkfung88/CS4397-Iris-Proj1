@@ -21,7 +21,7 @@ public class Icon : MonoBehaviour
     void Start()
     {
     
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         tzInfo = new TzHTTP();
         FinalOutput.gameObject.SetActive(false);
 

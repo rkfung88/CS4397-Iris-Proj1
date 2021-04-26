@@ -18,7 +18,7 @@ public class DisplayCurrency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // infomanager = FindObjectOfType<InfoManager>();
+       infomanager = FindObjectOfType<InfoManager>();
         curr = new CurrHTTP();
         FinalOutput.gameObject.SetActive(false);
     }

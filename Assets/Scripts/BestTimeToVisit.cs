@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 
 public class BestTimeToVisit : MonoBehaviour
 {
-    //private InfoManager infomanager;
+    private InfoManager infomanager;
     private WeatherHTTP weather;
     public TextMeshPro city;
     public GameObject map;
@@ -19,7 +19,7 @@ public class BestTimeToVisit : MonoBehaviour
 
     void Start()
     {
-        //infomanager = FindObjectOfType<InfoManager>();
+        infomanager = FindObjectOfType<InfoManager>();
         weather = new WeatherHTTP();
         FinalOutput.gameObject.SetActive(false);
 
