@@ -30,7 +30,9 @@ public class DisplayLanguage : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-           // infomanager.UpdateIconVisibility(transform.name);
+            map.SetActive(true);
+
+            // infomanager.UpdateIconVisibility(transform.name);
             lang.Location = city.text;
             StartCoroutine(GetLanguage(lang.Location, result =>
             {

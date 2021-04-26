@@ -28,6 +28,8 @@ public class DisplayCurrency : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
+            map.SetActive(true);
+
             // infomanager.UpdateIconVisibility(transform.name);
             curr.Location = city.text;
             StartCoroutine(GetCurrency(curr.Location, result =>

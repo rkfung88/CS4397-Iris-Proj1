@@ -29,7 +29,7 @@ public class DisplayPD : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             //infomanager.UpdateIconVisibility(transform.name);
-            map.SetActive(false);
+            map.SetActive(true);
 
             foreach (var pin in pins)
             {

@@ -30,6 +30,8 @@ public class Festivities : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
+            map.SetActive(true);
+
             //infomanager.UpdateIconVisibility(transform.name);
             weather.Location = city.text;
             StartCoroutine(GetFest(weather.Location, result =>

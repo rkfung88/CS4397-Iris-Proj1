@@ -29,6 +29,8 @@ public class Customs : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
+            map.SetActive(true);
+
             //infomanager.UpdateIconVisibility(transform.name);
             customs.Location = city.text;
             map.SetActive(true);
