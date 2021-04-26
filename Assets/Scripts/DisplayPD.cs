@@ -54,7 +54,7 @@ public class DisplayPD : MonoBehaviour
     private void OnMouseDown()
     {
         //infomanager.UpdateIconVisibility(transform.name);
-        map.SetActive(false);
+        map.SetActive(true);
 
         foreach (var pin in pins)
         {

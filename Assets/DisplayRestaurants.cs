@@ -30,7 +30,7 @@ public class DisplayRestaurants : MonoBehaviour
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             //infomanager.UpdateIconVisibility(transform.name);
-            map.SetActive(false);
+            map.SetActive(true);
 
             foreach (var pin in pins)
             {
@@ -101,7 +101,7 @@ public class DisplayRestaurants : MonoBehaviour
     private void OnMouseDown()
     {
         //infomanager.UpdateIconVisibility(transform.name);
-        map.SetActive(false);
+        map.SetActive(true);
 
         foreach(var pin in pins)
         {

@@ -54,7 +54,7 @@ public class DisplayTD : MonoBehaviour
             //}
 
             //infomanager.UpdateIconVisibility(transform.name);
-            map.SetActive(false);
+            map.SetActive(true);
 
             foreach (var pin in pins)
             {
@@ -79,7 +79,7 @@ public class DisplayTD : MonoBehaviour
     {
         //infomanager.UpdateIconVisibility(transform.name);
 
-        map.SetActive(false);
+        map.SetActive(true);
 
         foreach (var pin in pins)
         {

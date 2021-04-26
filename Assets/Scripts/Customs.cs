@@ -31,7 +31,7 @@ public class Customs : MonoBehaviour
         {
             //infomanager.UpdateIconVisibility(transform.name);
             customs.Location = city.text;
-            map.SetActive(false);
+            map.SetActive(true);
 
             foreach (var pin in pins)
             {
@@ -57,7 +57,7 @@ public class Customs : MonoBehaviour
     {
         //infomanager.UpdateIconVisibility(transform.name);
         customs.Location = city.text;
-        map.SetActive(false);
+        map.SetActive(true);
 
         foreach (var pin in pins)
         {
