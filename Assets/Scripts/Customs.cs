@@ -40,8 +40,8 @@ public class Customs : MonoBehaviour
 
             StartCoroutine(GetCustoms(customs.Location, result =>
             {
-                FinalOutput.color = new Color32(255, 255, 255, 255);
-                FinalOutput.fontSize = 9.5f;
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 5.5f;
                 FinalOutput.text = result.Customs;
                 FinalOutput.gameObject.SetActive(true);
 
@@ -66,8 +66,8 @@ public class Customs : MonoBehaviour
 
         StartCoroutine(GetCustoms(customs.Location, result =>
         {
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 9.5f;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 5.5f;
             FinalOutput.text = result.Customs;
             FinalOutput.gameObject.SetActive(true);
 

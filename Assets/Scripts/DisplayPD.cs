@@ -39,8 +39,8 @@ public class DisplayPD : MonoBehaviour
             dangers.Location = city.text;
             StartCoroutine(GetPD(dangers.Location, result =>
             {
-                FinalOutput.color = new Color32(255, 255, 255, 255);
-                FinalOutput.fontSize = 9.5f;
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 5.5f;
                 FinalOutput.text = result.PD;
                 FinalOutput.gameObject.SetActive(true);
             }));
@@ -64,8 +64,8 @@ public class DisplayPD : MonoBehaviour
         dangers.Location = city.text;
         StartCoroutine(GetPD(dangers.Location, result =>
         {
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 9.5f;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 4.5f;
             FinalOutput.text = result.PD;
             FinalOutput.gameObject.SetActive(true);
         }));

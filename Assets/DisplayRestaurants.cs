@@ -40,8 +40,8 @@ public class DisplayRestaurants : MonoBehaviour
             rest.Location = city.text;
             StartCoroutine(GetRestaurants(rest.Location, result =>
             {
-                FinalOutput.color = new Color32(255, 255, 255, 255);
-                FinalOutput.fontSize = 8.5f;
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 5.5f;
                 FinalOutput.text += result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
                 FinalOutput.gameObject.SetActive(true);
 
@@ -110,8 +110,8 @@ public class DisplayRestaurants : MonoBehaviour
         rest.Location = city.text;
         StartCoroutine(GetRestaurants(rest.Location, result =>
         {
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 8.5f;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 5.5f;
             FinalOutput.text += result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
             FinalOutput.gameObject.SetActive(true);
 

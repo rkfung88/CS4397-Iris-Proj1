@@ -64,8 +64,8 @@ public class DisplayTD : MonoBehaviour
             destinations.Location = city.text;
             StartCoroutine(GetDestin(destinations.Location, result =>
             {
-                FinalOutput.color = new Color32(255, 255, 255, 255);
-                FinalOutput.fontSize = 8.5f;
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 5.0f;
                 FinalOutput.text += result.Known_For + "\n" + result.Places + "\n\n";
                 FinalOutput.gameObject.SetActive(true);
 
@@ -89,8 +89,8 @@ public class DisplayTD : MonoBehaviour
         destinations.Location = city.text;
         StartCoroutine(GetDestin(destinations.Location, result =>
         {
-            FinalOutput.color = new Color32(255, 255, 255, 255);
-            FinalOutput.fontSize = 8.5f;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 5.0f;
             FinalOutput.text += result.Known_For + "\n" + result.Places + "\n\n";
             FinalOutput.gameObject.SetActive(true);
 
