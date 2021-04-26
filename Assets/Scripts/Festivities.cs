@@ -19,7 +19,7 @@ public class Festivities : MonoBehaviour
 
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+        //infomanager = FindObjectOfType<InfoManager>();
         weather = new WeatherHTTP();
         FinalOutput.gameObject.SetActive(false);
 
@@ -30,7 +30,7 @@ public class Festivities : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
+            //infomanager.UpdateIconVisibility(transform.name);
             weather.Location = city.text;
             StartCoroutine(GetFest(weather.Location, result =>
             {
@@ -48,7 +48,7 @@ public class Festivities : MonoBehaviour
     private void OnMouseDown()
     {
 
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
         weather.Location = city.text;
         StartCoroutine(GetFest(weather.Location, result =>
         {

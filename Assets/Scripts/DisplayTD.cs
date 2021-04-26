@@ -23,7 +23,7 @@ public class DisplayTD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+        //infomanager = FindObjectOfType<InfoManager>();
         destinations = new DestinHTTP();
         FinalOutput.gameObject.SetActive(false);
 
@@ -53,7 +53,7 @@ public class DisplayTD : MonoBehaviour
             //    }
             //}
 
-            infomanager.UpdateIconVisibility(transform.name);
+            //infomanager.UpdateIconVisibility(transform.name);
             map.SetActive(false);
 
             foreach (var pin in pins)
@@ -61,12 +61,23 @@ public class DisplayTD : MonoBehaviour
                 pin.SetActive(false);
             }
 
+            destinations.Location = city.text;
+            StartCoroutine(GetDestin(destinations.Location, result =>
+            {
+                FinalOutput.color = new Color32(255, 255, 255, 255);
+                FinalOutput.fontSize = 8.5f;
+                FinalOutput.text += result.Known_For + "\n" + result.Places + "\n\n";
+                FinalOutput.gameObject.SetActive(true);
+
+
+            }));
+
         }
     }
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
 
         map.SetActive(false);
 

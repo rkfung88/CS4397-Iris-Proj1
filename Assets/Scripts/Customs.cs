@@ -19,7 +19,7 @@ public class Customs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+       // infomanager = FindObjectOfType<InfoManager>();
         customs = new CustomsHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
@@ -29,7 +29,7 @@ public class Customs : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
+            //infomanager.UpdateIconVisibility(transform.name);
             customs.Location = city.text;
             map.SetActive(false);
 
@@ -55,7 +55,7 @@ public class Customs : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
         customs.Location = city.text;
         map.SetActive(false);
 

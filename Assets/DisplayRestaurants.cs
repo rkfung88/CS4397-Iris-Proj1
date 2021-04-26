@@ -18,7 +18,7 @@ public class DisplayRestaurants : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+        //infomanager = FindObjectOfType<InfoManager>();
         rest = new RestHTTP();
         FinalOutput.gameObject.SetActive(false);
 
@@ -29,7 +29,7 @@ public class DisplayRestaurants : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
+            //infomanager.UpdateIconVisibility(transform.name);
             map.SetActive(false);
 
             foreach (var pin in pins)
@@ -100,7 +100,7 @@ public class DisplayRestaurants : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
         map.SetActive(false);
 
         foreach(var pin in pins)

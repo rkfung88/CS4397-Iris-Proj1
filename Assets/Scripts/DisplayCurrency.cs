@@ -18,7 +18,7 @@ public class DisplayCurrency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+       // infomanager = FindObjectOfType<InfoManager>();
         curr = new CurrHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
@@ -28,8 +28,18 @@ public class DisplayCurrency : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
-            
+            // infomanager.UpdateIconVisibility(transform.name);
+            curr.Location = city.text;
+            StartCoroutine(GetCurrency(curr.Location, result =>
+            {
+                FinalOutput.alignment = TextAlignmentOptions.Center;
+                FinalOutput.color = new Color32(0, 0, 0, 255);
+                FinalOutput.fontSize = 20.0f;
+                FinalOutput.text = result.Currency;
+                FinalOutput.gameObject.SetActive(true);
+
+            }));
+
         }
     }
 
@@ -37,10 +47,11 @@ public class DisplayCurrency : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+       // infomanager.UpdateIconVisibility(transform.name);
         curr.Location = city.text;
         StartCoroutine(GetCurrency(curr.Location, result =>
         {
+            FinalOutput.alignment = TextAlignmentOptions.Center;
             FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 20.0f;
             FinalOutput.text = result.Currency;

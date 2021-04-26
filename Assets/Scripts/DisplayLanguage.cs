@@ -20,7 +20,7 @@ public class DisplayLanguage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        infomanager = FindObjectOfType<InfoManager>();
+        //infomanager = FindObjectOfType<InfoManager>();
         lang = new LangHTTP();
         FinalOutput.gameObject.SetActive(false);
     }
@@ -30,10 +30,11 @@ public class DisplayLanguage : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
+           // infomanager.UpdateIconVisibility(transform.name);
             lang.Location = city.text;
             StartCoroutine(GetLanguage(lang.Location, result =>
             {
+                FinalOutput.alignment = TextAlignmentOptions.Center;
                 FinalOutput.color = new Color32(0, 0, 0, 255);
                 FinalOutput.fontSize = 20.0f;
                 FinalOutput.text = result.Language;
@@ -49,10 +50,11 @@ public class DisplayLanguage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
         lang.Location = city.text;
         StartCoroutine(GetLanguage(lang.Location, result =>
         {
+            FinalOutput.alignment = TextAlignmentOptions.Center;
             FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 20.0f;
             FinalOutput.text = result.Language;

@@ -21,7 +21,7 @@ public class Icon : MonoBehaviour
     void Start()
     {
     
-        infomanager = FindObjectOfType<InfoManager>();
+        //infomanager = FindObjectOfType<InfoManager>();
         tzInfo = new TzHTTP();
         FinalOutput.gameObject.SetActive(false);
 
@@ -32,10 +32,11 @@ public class Icon : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            infomanager.UpdateIconVisibility(transform.name);
+           //infomanager.UpdateIconVisibility(transform.name);
             tzInfo.Location = city.text;
             StartCoroutine(GetTimezone(tzInfo.Location, result =>
             {
+                FinalOutput.alignment = TextAlignmentOptions.Center;
                 FinalOutput.color = new Color32(0, 0, 0, 255);
                 FinalOutput.fontSize = 20.0f;
                 FinalOutput.text = result.Timezone;
@@ -51,12 +52,13 @@ public class Icon : MonoBehaviour
 
     private void OnMouseDown()
     {
-        infomanager.UpdateIconVisibility(transform.name);
+        //infomanager.UpdateIconVisibility(transform.name);
         tzInfo.Location = city.text;
         StartCoroutine(GetTimezone(tzInfo.Location, result =>
          {
+             FinalOutput.alignment = TextAlignmentOptions.Center;
              FinalOutput.color = new Color32(0, 0, 0, 255);
-             FinalOutput.fontSize = 20.0f;
+             FinalOutput.fontSize = 15.0f;
              FinalOutput.text = result.Timezone;
              FinalOutput.gameObject.SetActive(true);
 
