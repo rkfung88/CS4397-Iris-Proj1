@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _options:
     locationOptions:
-      latitudeLongitude: 35.68, 139.77
+      latitudeLongitude: 18.83722, 98.97056
       zoom: 15
     extentOptions:
       extentType: 1
@@ -74,12 +74,12 @@ MonoBehaviour:
   _initializeOnStart: 1
   _imagery:
     _layerProperty:
-      sourceType: 0
+      sourceType: 5
       sourceOptions:
         isActive: 1
         layerSource:
-          Name: Streets
-          Id: mapbox://styles/mapbox/streets-v10
+          Name: Satellite Streets
+          Id: mapbox://styles/mapbox/satellite-streets-v10
           Modified: 
           UserName: 
       rasterOptions:
@@ -96,7 +96,7 @@ MonoBehaviour:
           Id: mapbox.terrain-rgb
           Modified: 
           UserName: 
-      elevationLayerType: 0
+      elevationLayerType: 1
       requiredOptions:
         exaggerationFactor: 1
       colliderOptions:
@@ -187,14 +187,14 @@ MonoBehaviour:
         colliderOptions:
           colliderType: 0
         materialOptions:
-          style: 2
+          style: 4
           texturingType: 2
           materials:
           - Materials:
             - {fileID: 0}
           - Materials:
             - {fileID: 0}
-          atlasInfo: {fileID: 11400000, guid: 817b646f06c8845628ba7acf4819a67d, type: 2}
+          atlasInfo: {fileID: 11400000, guid: c422f39ca8fe566479230c87805b3301, type: 2}
           lightStyleOpacity: 1
           darkStyleOpacity: 1
           colorStyleColor: {r: 0.1764706, g: 0.8509805, b: 1, a: 1}
@@ -299,4 +299,4 @@ MonoBehaviour:
         density: 15
   _tileProvider: {fileID: 0}
   _previewOptions:
-    isPreviewEnabled: 1
+    isPreviewEnabled: 0
