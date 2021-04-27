@@ -66,7 +66,7 @@ public class DisplayTD : MonoBehaviour
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
                 FinalOutput.fontSize = 5.0f;
-                FinalOutput.text += result.Known_For + "\n" + result.Places + "\n\n";
+                FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
                 FinalOutput.gameObject.SetActive(true);
 
 
@@ -91,7 +91,7 @@ public class DisplayTD : MonoBehaviour
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 5.0f;
-            FinalOutput.text += result.Known_For + "\n" + result.Places + "\n\n";
+            FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
             FinalOutput.gameObject.SetActive(true);
 
 

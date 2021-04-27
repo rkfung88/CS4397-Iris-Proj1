@@ -42,7 +42,7 @@ public class DisplayRestaurants : MonoBehaviour
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
                 FinalOutput.fontSize = 5.5f;
-                FinalOutput.text += result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
+                FinalOutput.text = result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
                 FinalOutput.gameObject.SetActive(true);
 
 
@@ -112,7 +112,7 @@ public class DisplayRestaurants : MonoBehaviour
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);
             FinalOutput.fontSize = 5.5f;
-            FinalOutput.text += result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
+            FinalOutput.text = result.Cuisine + "\n" + result.Foods + "\n" + result.Rest + "\n\n";
             FinalOutput.gameObject.SetActive(true);
 
 
