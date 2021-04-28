@@ -13,7 +13,9 @@ public class DisplayCurrency : MonoBehaviour
     public TextMeshPro city;
     public TextMeshPro FinalOutput;
     public GameObject map;
-   
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,7 @@ public class DisplayCurrency : MonoBehaviour
 
             // infomanager.UpdateIconVisibility(transform.name);
             curr.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetCurrency(curr.Location, result =>
             {
                 FinalOutput.alignment = TextAlignmentOptions.Center;
@@ -51,6 +54,7 @@ public class DisplayCurrency : MonoBehaviour
     {
        // infomanager.UpdateIconVisibility(transform.name);
         curr.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetCurrency(curr.Location, result =>
         {
             FinalOutput.alignment = TextAlignmentOptions.Center;

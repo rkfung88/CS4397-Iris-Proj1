@@ -16,6 +16,8 @@ public class BestTimeToVisit : MonoBehaviour
     public TextMeshPro city;
     public GameObject map;
     public TextMeshPro FinalOutput;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class BestTimeToVisit : MonoBehaviour
 
             // infomanager.UpdateIconVisibility(transform.name);
             weather.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetWeather(weather.Location, result =>
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
@@ -52,6 +55,7 @@ public class BestTimeToVisit : MonoBehaviour
         
         //infomanager.UpdateIconVisibility(transform.name);
         weather.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetWeather(weather.Location, result =>
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);

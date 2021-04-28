@@ -14,6 +14,8 @@ public class DisplayPD : MonoBehaviour
     public GameObject map;
     public TextMeshPro FinalOutput;
     public List<GameObject> pins;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class DisplayPD : MonoBehaviour
             }
 
             dangers.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetPD(dangers.Location, result =>
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
@@ -62,6 +65,7 @@ public class DisplayPD : MonoBehaviour
         }
 
         dangers.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetPD(dangers.Location, result =>
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);

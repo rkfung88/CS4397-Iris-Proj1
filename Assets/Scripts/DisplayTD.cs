@@ -18,6 +18,8 @@ public class DisplayTD : MonoBehaviour
     public TextMeshPro FinalOutput;
     public GameObject map;
     public List<GameObject> pins;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
 
     // Start is called before the first frame update
@@ -62,6 +64,7 @@ public class DisplayTD : MonoBehaviour
             }
 
             destinations.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetDestin(destinations.Location, result =>
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
@@ -87,6 +90,7 @@ public class DisplayTD : MonoBehaviour
         }
 
         destinations.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetDestin(destinations.Location, result =>
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);

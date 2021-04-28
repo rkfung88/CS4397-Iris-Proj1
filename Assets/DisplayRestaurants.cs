@@ -14,6 +14,8 @@ public class DisplayRestaurants : MonoBehaviour
     public TextMeshPro FinalOutput;
     public GameObject map;
     public List<GameObject> pins;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class DisplayRestaurants : MonoBehaviour
             }
 
             rest.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetRestaurants(rest.Location, result =>
             {
                 FinalOutput.color = new Color32(0, 0, 0, 255);
@@ -108,6 +111,7 @@ public class DisplayRestaurants : MonoBehaviour
             pin.SetActive(false);
         }
         rest.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetRestaurants(rest.Location, result =>
         {
             FinalOutput.color = new Color32(0, 0, 0, 255);

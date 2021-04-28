@@ -750,6 +750,8 @@ MonoBehaviour:
   city: {fileID: 1260695923}
   map: {fileID: 1443762637}
   FinalOutput: {fileID: 741809923}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 1069551991}
 --- !u!1 &147879866
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +875,8 @@ MonoBehaviour:
   - {fileID: 1496253292}
   - {fileID: 9583308}
   - {fileID: 637921128}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 164261398}
 --- !u!1 &163706236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1625,8 @@ MonoBehaviour:
   - {fileID: 610610950}
   - {fileID: 814800420}
   - {fileID: 688437878}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 1151820857}
 --- !u!1 &252751041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2221,8 @@ MonoBehaviour:
   - {fileID: 1496253292}
   - {fileID: 9583308}
   - {fileID: 637921128}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 197165793}
 --- !u!1001 &425127799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3037,6 +3045,8 @@ MonoBehaviour:
   city: {fileID: 1260695923}
   map: {fileID: 1443762637}
   FinalOutput: {fileID: 741809923}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 2116789420}
 --- !u!1 &688437878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,6 +3546,8 @@ MonoBehaviour:
   city: {fileID: 1260695923}
   FinalOutput: {fileID: 741809923}
   map: {fileID: 1443762637}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 6196777}
 --- !u!1 &768843566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,6 +3805,8 @@ MonoBehaviour:
   - {fileID: 610610950}
   - {fileID: 814800420}
   - {fileID: 688437878}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 353509169}
 --- !u!1 &1069551989
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,6 +4772,8 @@ MonoBehaviour:
   FinalOutput: {fileID: 741809923}
   map: {fileID: 1443762637}
   selectedCity: 
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 1897365001}
 --- !u!1001 &1304125519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5450,6 +5466,8 @@ MonoBehaviour:
   - {fileID: 610610950}
   - {fileID: 688437878}
   - {fileID: 1509090609}
+  SelectedInfo: {fileID: 1634643632}
+  InfoIconText: {fileID: 19307871}
 --- !u!1 &1634643630
 GameObject:
   m_ObjectHideFlags: 0

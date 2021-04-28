@@ -15,6 +15,8 @@ public class Customs : MonoBehaviour
     public GameObject map;
     public TextMeshPro FinalOutput;
     public List<GameObject> pins;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class Customs : MonoBehaviour
 
             //infomanager.UpdateIconVisibility(transform.name);
             customs.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             map.SetActive(true);
 
             foreach (var pin in pins)
@@ -59,6 +62,7 @@ public class Customs : MonoBehaviour
     {
         //infomanager.UpdateIconVisibility(transform.name);
         customs.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         map.SetActive(true);
 
         foreach (var pin in pins)

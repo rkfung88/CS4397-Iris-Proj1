@@ -15,6 +15,8 @@ public class Icon : MonoBehaviour
     public TextMeshPro FinalOutput;
     public GameObject map;
     public string selectedCity;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
 
     // Start is called before the first frame update
@@ -36,6 +38,7 @@ public class Icon : MonoBehaviour
 
             //infomanager.UpdateIconVisibility(transform.name);
             tzInfo.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetTimezone(tzInfo.Location, result =>
             {
                 FinalOutput.alignment = TextAlignmentOptions.Center;
@@ -56,6 +59,7 @@ public class Icon : MonoBehaviour
     {
         //infomanager.UpdateIconVisibility(transform.name);
         tzInfo.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetTimezone(tzInfo.Location, result =>
          {
              FinalOutput.alignment = TextAlignmentOptions.Center;

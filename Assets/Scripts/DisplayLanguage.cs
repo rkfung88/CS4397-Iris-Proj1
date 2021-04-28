@@ -15,6 +15,8 @@ public class DisplayLanguage : MonoBehaviour
     public TextMeshPro FinalOutput;
     public GameObject map;
     public List<GameObject> pins;
+    public TextMeshPro SelectedInfo;
+    public TextMeshPro InfoIconText;
 
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class DisplayLanguage : MonoBehaviour
 
             // infomanager.UpdateIconVisibility(transform.name);
             lang.Location = city.text;
+            SelectedInfo.text = InfoIconText.text;
             StartCoroutine(GetLanguage(lang.Location, result =>
             {
                 FinalOutput.alignment = TextAlignmentOptions.Center;
@@ -54,6 +57,7 @@ public class DisplayLanguage : MonoBehaviour
     {
         //infomanager.UpdateIconVisibility(transform.name);
         lang.Location = city.text;
+        SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetLanguage(lang.Location, result =>
         {
             FinalOutput.alignment = TextAlignmentOptions.Center;
