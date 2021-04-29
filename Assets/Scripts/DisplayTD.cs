@@ -36,45 +36,52 @@ public class DisplayTD : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            //RaycastHit raycastHit;
-            //if (Physics.Raycast(raycast, out raycastHit))
-            //{
-            //    Debug.Log("2");
-            //    //if (raycastHit.collider.name == "Map")
-            //    //{
-            //    //    Debug.Log("Map clicked");
-            //    //}
-
-            //    //OR with Tag
-
-            //    if (raycastHit.collider.CompareTag("TravelPlaces"))
-            //    {
-            //        Debug.Log("TravelPlaces");
-            //        OnMouseDown();
-            //    }
-            //}
-
-            //infomanager.UpdateIconVisibility(transform.name);
-            map.SetActive(true);
-
-            foreach (var pin in pins)
+            if (Input.touchCount == 1)
             {
-                pin.SetActive(false);
+                Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Vector2 touchPos = new Vector2(wp.x, wp.y);
+                if (GetComponent<Collider2D>().OverlapPoint(wp))
+                {
+                    //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                    //RaycastHit raycastHit;
+                    //if (Physics.Raycast(raycast, out raycastHit))
+                    //{
+                    //    Debug.Log("2");
+                    //    //if (raycastHit.collider.name == "Map")
+                    //    //{
+                    //    //    Debug.Log("Map clicked");
+                    //    //}
+
+                    //    //OR with Tag
+
+                    //    if (raycastHit.collider.CompareTag("TravelPlaces"))
+                    //    {
+                    //        Debug.Log("TravelPlaces");
+                    //        OnMouseDown();
+                    //    }
+                    //}
+
+                    //infomanager.UpdateIconVisibility(transform.name);
+                    map.SetActive(true);
+
+                    foreach (var pin in pins)
+                    {
+                        pin.SetActive(false);
+                    }
+
+                    destinations.Location = city.text;
+                    SelectedInfo.text = InfoIconText.text;
+                    StartCoroutine(GetDestin(destinations.Location, result =>
+                    {
+                        FinalOutput.color = new Color32(0, 0, 0, 255);
+                        FinalOutput.fontSize = 5.0f;
+                        FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
+                        FinalOutput.gameObject.SetActive(true);
+
+
+                    }));
+                }
             }
-
-            destinations.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetDestin(destinations.Location, result =>
-            {
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 5.0f;
-                FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
-                FinalOutput.gameObject.SetActive(true);
-
-
-            }));
-
         }
     }
 
