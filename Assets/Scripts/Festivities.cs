@@ -33,27 +33,27 @@ public class Festivities : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            map.SetActive(true);
-
-            //infomanager.UpdateIconVisibility(transform.name);
-            weather.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetFest(weather.Location, result =>
+            if (Input.touchCount == 1)
             {
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 15.0f;
-                FinalOutput.text = result.AI;
-                FinalOutput.gameObject.SetActive(true);
 
-            }));
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
 
+                    if (raycastHit.collider.gameObject.GetComponent<Festivities>())
+                    {
+                        Debug.Log($"The festivities button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
 
+                }
+            }
         }
     }
 
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
-
         //infomanager.UpdateIconVisibility(transform.name);
         weather.Location = city.text;
         SelectedInfo.text = InfoIconText.text;
@@ -65,8 +65,11 @@ public class Festivities : MonoBehaviour
             FinalOutput.gameObject.SetActive(true);
 
         }));
+    }
 
-
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetFest(string id, System.Action<WeatherHTTP> callback = null)

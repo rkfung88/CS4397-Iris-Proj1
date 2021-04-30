@@ -38,14 +38,18 @@ public class DisplayTD : MonoBehaviour
         {
             if (Input.touchCount == 1)
             {
-                Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                Vector2 touchPos = new Vector2(wp.x, wp.y);
-                if (GetComponent<Collider2D>().OverlapPoint(wp))
-                {
-                    //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                    //RaycastHit raycastHit;
-                    //if (Physics.Raycast(raycast, out raycastHit))
-                    //{
+              
+                    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                    RaycastHit raycastHit;
+                    if (Physics.Raycast(raycast, out raycastHit))
+                    {
+
+                    if (raycastHit.collider.gameObject.GetComponent<DisplayTD>())
+                    {
+                        Debug.Log($"The TD button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
+
                     //    Debug.Log("2");
                     //    //if (raycastHit.collider.name == "Map")
                     //    //{
@@ -59,33 +63,32 @@ public class DisplayTD : MonoBehaviour
                     //        Debug.Log("TravelPlaces");
                     //        OnMouseDown();
                     //    }
-                    //}
-
-                    //infomanager.UpdateIconVisibility(transform.name);
-                    map.SetActive(true);
-
-                    foreach (var pin in pins)
-                    {
-                        pin.SetActive(false);
                     }
 
-                    destinations.Location = city.text;
-                    SelectedInfo.text = InfoIconText.text;
-                    StartCoroutine(GetDestin(destinations.Location, result =>
-                    {
-                        FinalOutput.color = new Color32(0, 0, 0, 255);
-                        FinalOutput.fontSize = 5.0f;
-                        FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
-                        FinalOutput.gameObject.SetActive(true);
+                    //infomanager.UpdateIconVisibility(transform.name);
+                    //map.SetActive(true);
+
+                    //foreach (var pin in pins)
+                    //{
+                    //    pin.SetActive(false);
+                    //}
+
+                    //destinations.Location = city.text;
+                    //SelectedInfo.text = InfoIconText.text;
+                    //StartCoroutine(GetDestin(destinations.Location, result =>
+                    //{
+                    //    FinalOutput.color = new Color32(0, 0, 0, 255);
+                    //    FinalOutput.fontSize = 5.0f;
+                    //    FinalOutput.text = result.Known_For + "\n" + result.Places + "\n\n";
+                    //    FinalOutput.gameObject.SetActive(true);
 
 
-                    }));
-                }
+                    //}));
+                
             }
         }
     }
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
         //infomanager.UpdateIconVisibility(transform.name);
 
@@ -107,6 +110,10 @@ public class DisplayTD : MonoBehaviour
 
 
         }));
+    }
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetDestin(string id, System.Action<DestinHTTP> callback = null)

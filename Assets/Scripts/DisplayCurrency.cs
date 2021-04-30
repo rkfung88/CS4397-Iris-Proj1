@@ -30,29 +30,28 @@ public class DisplayCurrency : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            map.SetActive(true);
-
-            // infomanager.UpdateIconVisibility(transform.name);
-            curr.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetCurrency(curr.Location, result =>
+            if (Input.touchCount == 1)
             {
-                FinalOutput.alignment = TextAlignmentOptions.Center;
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 20.0f;
-                FinalOutput.text = result.Currency;
-                FinalOutput.gameObject.SetActive(true);
 
-            }));
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
 
+                    if (raycastHit.collider.gameObject.GetComponent<DisplayCurrency>())
+                    {
+                        Debug.Log($"The currency button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
+
+                }
+            }
         }
     }
 
-
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
-       // infomanager.UpdateIconVisibility(transform.name);
+        // infomanager.UpdateIconVisibility(transform.name);
         curr.Location = city.text;
         SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetCurrency(curr.Location, result =>
@@ -64,7 +63,12 @@ public class DisplayCurrency : MonoBehaviour
             FinalOutput.gameObject.SetActive(true);
 
         }));
+    }
 
+
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetCurrency(string id, System.Action<CurrHTTP> callback = null)

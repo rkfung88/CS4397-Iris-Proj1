@@ -31,34 +31,26 @@ public class Customs : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            map.SetActive(true);
-
-            //infomanager.UpdateIconVisibility(transform.name);
-            customs.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            map.SetActive(true);
-
-            foreach (var pin in pins)
+            if (Input.touchCount == 1)
             {
-                pin.SetActive(false);
+
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
+
+                    if (raycastHit.collider.gameObject.GetComponent<Customs>())
+                    {
+                        Debug.Log($"The customs button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
+
+                }
             }
-
-            StartCoroutine(GetCustoms(customs.Location, result =>
-            {
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 5.5f;
-                FinalOutput.text = result.Customs;
-                FinalOutput.gameObject.SetActive(true);
-
-            }));
-
-
         }
     }
 
-
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
         //infomanager.UpdateIconVisibility(transform.name);
         customs.Location = city.text;
@@ -78,8 +70,12 @@ public class Customs : MonoBehaviour
             FinalOutput.gameObject.SetActive(true);
 
         }));
+    }
 
 
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetCustoms(string id, System.Action<CustomsHTTP> callback = null)

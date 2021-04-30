@@ -34,42 +34,45 @@ public class Icon : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            map.SetActive(true);
-
-            //infomanager.UpdateIconVisibility(transform.name);
-            tzInfo.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetTimezone(tzInfo.Location, result =>
+            if (Input.touchCount == 1)
             {
-                FinalOutput.alignment = TextAlignmentOptions.Center;
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 20.0f;
-                FinalOutput.text = result.Timezone;
-                FinalOutput.gameObject.SetActive(true);
 
-            }));
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
 
+                    if (raycastHit.collider.gameObject.GetComponent<DisplayLanguage>())
+                    {
+                        Debug.Log($"The icon button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
 
+                }
+            }
         }
     }
 
-
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
         //infomanager.UpdateIconVisibility(transform.name);
         tzInfo.Location = city.text;
         SelectedInfo.text = InfoIconText.text;
         StartCoroutine(GetTimezone(tzInfo.Location, result =>
-         {
-             FinalOutput.alignment = TextAlignmentOptions.Center;
-             FinalOutput.color = new Color32(0, 0, 0, 255);
-             FinalOutput.fontSize = 15.0f;
-             FinalOutput.text = result.Timezone;
-             FinalOutput.gameObject.SetActive(true);
+        {
+            FinalOutput.alignment = TextAlignmentOptions.Center;
+            FinalOutput.color = new Color32(0, 0, 0, 255);
+            FinalOutput.fontSize = 15.0f;
+            FinalOutput.text = result.Timezone;
+            FinalOutput.gameObject.SetActive(true);
 
-         }));
-        
+        }));
+    }
+
+
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetTimezone(string id, System.Action<TzHTTP> callback = null)

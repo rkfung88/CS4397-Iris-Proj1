@@ -32,28 +32,26 @@ public class DisplayLanguage : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            map.SetActive(true);
-
-            // infomanager.UpdateIconVisibility(transform.name);
-            lang.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetLanguage(lang.Location, result =>
+            if (Input.touchCount == 1)
             {
-                FinalOutput.alignment = TextAlignmentOptions.Center;
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 20.0f;
-                FinalOutput.text = result.Language;
-                FinalOutput.gameObject.SetActive(true);
 
-            }));
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
 
+                    if (raycastHit.collider.gameObject.GetComponent<DisplayLanguage>())
+                    {
+                        Debug.Log($"The language button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
 
+                }
+            }
         }
     }
 
-
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
         //infomanager.UpdateIconVisibility(transform.name);
         lang.Location = city.text;
@@ -68,6 +66,11 @@ public class DisplayLanguage : MonoBehaviour
 
         }));
 
+    }
+
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
     IEnumerator GetLanguage(string id, System.Action<LangHTTP> callback = null)

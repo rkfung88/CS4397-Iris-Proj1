@@ -30,31 +30,26 @@ public class DisplayPD : MonoBehaviour
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            //infomanager.UpdateIconVisibility(transform.name);
-            map.SetActive(true);
-
-            foreach (var pin in pins)
+            if (Input.touchCount == 1)
             {
-                pin.SetActive(false);
+
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit))
+                {
+
+                    if (raycastHit.collider.gameObject.GetComponent<DisplayPD>())
+                    {
+                        Debug.Log($"The PD button was hit while {infomanager.city.text} was selected ");
+                        onClickOrTap();
+                    }
+
+                }
             }
-
-            dangers.Location = city.text;
-            SelectedInfo.text = InfoIconText.text;
-            StartCoroutine(GetPD(dangers.Location, result =>
-            {
-                FinalOutput.color = new Color32(0, 0, 0, 255);
-                FinalOutput.fontSize = 5.5f;
-                FinalOutput.text = result.PD;
-                FinalOutput.gameObject.SetActive(true);
-            }));
-
-
         }
     }
 
-
-
-    private void OnMouseDown()
+    private void onClickOrTap()
     {
         //infomanager.UpdateIconVisibility(transform.name);
         map.SetActive(true);
@@ -73,9 +68,11 @@ public class DisplayPD : MonoBehaviour
             FinalOutput.text = result.PD;
             FinalOutput.gameObject.SetActive(true);
         }));
+    }
 
-    
-
+    private void OnMouseDown()
+    {
+        onClickOrTap();
     }
 
 
